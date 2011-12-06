@@ -41,8 +41,9 @@ public class MainWindow extends javax.swing.JFrame {
     /** Creates new form MainWindow */
     public MainWindow() {
         initComponents();
+        setTitle("Maquina Virtual =)");
         chooser = new JFileChooser();
-        execution = new Execution();
+        execution = new Execution(btnExec);
     }
 
     /** This method is called from within the constructor to
@@ -66,7 +67,6 @@ public class MainWindow extends javax.swing.JFrame {
         lblSaida = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridLayout(1, 2));
 
         btnFile.setText("Load");
         btnFile.addActionListener(new java.awt.event.ActionListener() {
@@ -91,20 +91,20 @@ public class MainWindow extends javax.swing.JFrame {
         pnlEsqLayout.setHorizontalGroup(
             pnlEsqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlEsqLayout.createSequentialGroup()
+                .addGap(186, 186, 186)
+                .addComponent(btnExec)
+                .addContainerGap(273, Short.MAX_VALUE))
+            .addGroup(pnlEsqLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlEsqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlEsqLayout.createSequentialGroup()
                         .addComponent(pnlInstructions, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(pnlEsqLayout.createSequentialGroup()
-                        .addComponent(lblFilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                        .addComponent(lblFilePath, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(btnFile)
                         .addGap(100, 100, 100))))
-            .addGroup(pnlEsqLayout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(btnExec)
-                .addContainerGap(288, Short.MAX_VALUE))
         );
         pnlEsqLayout.setVerticalGroup(
             pnlEsqLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,13 +114,11 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(btnFile)
                     .addComponent(lblFilePath))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pnlInstructions, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
+                .addComponent(pnlInstructions, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnExec)
-                .addGap(44, 44, 44))
+                .addContainerGap())
         );
-
-        getContentPane().add(pnlEsq);
 
         pnlStack.setLayout(new java.awt.BorderLayout());
 
@@ -138,27 +136,46 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlDirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDirLayout.createSequentialGroup()
-                        .addGroup(pnlDirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(scrSaida, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)
-                            .addComponent(pnlStack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20))
+                        .addComponent(scrSaida, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(pnlDirLayout.createSequentialGroup()
                         .addComponent(lblSaida)
-                        .addContainerGap(494, Short.MAX_VALUE))))
+                        .addContainerGap(304, Short.MAX_VALUE))))
+            .addGroup(pnlDirLayout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addComponent(pnlStack, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         pnlDirLayout.setVerticalGroup(
             pnlDirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDirLayout.createSequentialGroup()
-                .addGap(142, 142, 142)
-                .addComponent(pnlStack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 341, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlStack, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblSaida)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrSaida, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        getContentPane().add(pnlDir);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlEsq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlDir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlEsq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlDir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

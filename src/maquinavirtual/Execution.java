@@ -1,6 +1,7 @@
 package maquinavirtual;
 
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
@@ -12,7 +13,12 @@ import javax.swing.JTextArea;
 public class Execution {
 
     private int i = -1;
+    private JButton btnExecutar;
 
+    public Execution(JButton j) {
+        btnExecutar = j;
+    }
+    
     public void incI() {
         i++;
     }
@@ -115,7 +121,7 @@ public class Execution {
         else if(instruction.getOperation().equals("CEQ"))
         {
             //se M[s-1] = M[s] então M[s-1]:=1 senão M[s-1]:=0; s:=s - 1
-            if(stack.get(stack.size()-1).getValue() == stack.get(stack.size()-1).getValue())
+            if(stack.get(stack.size()-2).getValue() == stack.get(stack.size()-1).getValue())
                 stack.set(stack.size()-2, new StackElement(stack.size()-2, 1) );
             else
                 stack.set(stack.size()-2, new StackElement(stack.size()-2, 0) );
@@ -155,7 +161,7 @@ public class Execution {
         }
         else if(instruction.getOperation().equals("HLT"))
         {
-            //para a execução
+            btnExecutar.setEnabled(false);
         }
 
         else if(instruction.getOperation().equals("STR"))
@@ -198,21 +204,31 @@ public class Execution {
         }
 
          else if(instruction.getOperation().equals("ALLOC"))
-        {
+        {   //ALLOC m,n
+            //Para k:=0 até n-1 faça
+                //{s:=s + 1; M[s]:=M[m+k]}
+
              int att1 = Integer.parseInt(instruction.getAttr1());
              int att2 = Integer.parseInt(instruction.getAttr2());
              for(int k=0; k<(att2);k++){
-                 stack.add(new StackElement(att1+k, 0));
+                 stack.add(new StackElement(stack.size(), 0));
+                 stack.set(stack.size()-1,new StackElement(stack.size()-1, stack.get(att1+k).getValue()));
+                 
              }
         }
 
          else if(instruction.getOperation().equals("DALLOC"))
         {
+            //DALLOC m,n
+            //Para k:=n-1 até 0 faça
+                //{M[m+k]:=M[s]; s:=s - 1}
+
+            
              int att1 = Integer.parseInt(instruction.getAttr1());
              int att2 = Integer.parseInt(instruction.getAttr2());
              
              for(int k =(att2-1);k>=0;k--){
-                 stack.set(att1+k, new StackElement(att1+1, stack.get(stack.size()-1).getValue()));
+                 stack.set(att1+k, new StackElement(att1+k, stack.get(stack.size()-1).getValue()));
                  stack.remove(stack.size()-1);
              }
 
